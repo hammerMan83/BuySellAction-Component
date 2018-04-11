@@ -1,2 +1,0 @@
-# FromToCurrenciesComponent
-Created with CodeSandbox
