@@ -1,10 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
-import { DropdownButton } from "react-bootstrap";
-import { MenuItem } from "react-bootstrap";
-import { FormGroup } from "react-bootstrap";
-import { ControlLabel } from "react-bootstrap";
-import { FormControl } from "react-bootstrap";
+import { ButtonToolbar } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import "./styles.css";
 
 const styles = {
@@ -12,21 +9,32 @@ const styles = {
   textAlign: "center"
 };
 
-const App = () => (
-  <div style={styles}>
-    <FormGroup>
-      <DropdownButton
-        bsStyle="Default"
-        title="Choose Action"
-        id={"DropDownBuySell"}
-      >
-        <MenuItem eventKey="1" active>
-          Buy
-        </MenuItem>
-        <MenuItem eventKey="2">Sell</MenuItem>
-      </DropdownButton>
-    </FormGroup>
-  </div>
-);
+const buttonStyles = { width: "9em" };
+const chosenButton = { "background-color": "coral" };
 
-render(<App />, document.getElementById("root"));
+class BuySellAction extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      actionType: "BUY"
+    };
+
+    // Q: Is this binding mandatory ?
+    this.onClickBuySell = this.onClickBuySell.bind(this);
+  }
+
+  onClickBuySell = e => this.setState({ price: e.target.value });
+
+  render() {
+    return (
+      <div>
+        <ButtonToolbar>
+          <Button style={{ ...buttonStyles, ...chosenButton }}>BUY</Button>
+          <Button style={buttonStyles}>SELL</Button>
+        </ButtonToolbar>
+      </div>
+    );
+  }
+}
+
+render(<BuySellAction />, document.getElementById("root"));
