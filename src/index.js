@@ -9,9 +9,6 @@ const styles = {
   textAlign: "center"
 };
 
-const buttonStyles = { width: "9em" };
-const chosenButton = { "background-color": "coral" };
-
 class BuySellAction extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -20,17 +17,45 @@ class BuySellAction extends React.Component {
     };
 
     // Q: Is this binding mandatory ?
-    this.onClickBuySell = this.onClickBuySell.bind(this);
+    this.onClickBuy = this.onClickBuy.bind(this);
+    this.onClickSell = this.onClickSell.bind(this);
   }
 
-  onClickBuySell = e => this.setState({ price: e.target.value });
+  onClickBuy = e => {
+    this.setState({ actionType: "BUY" });
+  };
+
+  onClickSell = e => {
+    this.setState({ actionType: "SELL" });
+  };
 
   render() {
+    let buyButtonStyle = {
+      width: "9em",
+      fontFamily: "sans-serif",
+      fontWeight: "bold"
+    };
+    let sellButtonStyle = {
+      width: "9em",
+      fontFamily: "sans-serif",
+      fontWeight: "bold"
+    };
+
+    buyButtonStyle.backgroundColor =
+      this.state.actionType === "BUY" ? "#00A45B" : "#9CAAC1";
+
+    sellButtonStyle.backgroundColor =
+      this.state.actionType === "SELL" ? "#F75535" : "#9CAAC1";
+
     return (
       <div>
         <ButtonToolbar>
-          <Button style={{ ...buttonStyles, ...chosenButton }}>BUY</Button>
-          <Button style={buttonStyles}>SELL</Button>
+          <Button onClick={this.onClickBuy} style={buyButtonStyle}>
+            BUY
+          </Button>
+          <Button onClick={this.onClickSell} style={sellButtonStyle}>
+            SELL
+          </Button>
         </ButtonToolbar>
       </div>
     );
