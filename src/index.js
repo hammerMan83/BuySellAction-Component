@@ -2,7 +2,22 @@ import React from "react";
 import { render } from "react-dom";
 import { ButtonToolbar } from "react-bootstrap";
 import { Button } from "react-bootstrap";
+import { FormGroup } from 'react-bootstrap';
+import { ControlLabel } from 'react-bootstrap';
+import { FormControl } from 'react-bootstrap';
+import { HelpBlock } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import "./styles.css";
+
+function FieldGroup({ id, label, help, ...props }) {
+  return (
+    <FormGroup controlId={id} bsClass='buySellTextField'>
+      <ControlLabel>{label}</ControlLabel>
+      <FormControl {...props} />
+      {help && <HelpBlock>{help}</HelpBlock>}
+    </FormGroup>
+  );
+}
 
 const styles = {
   fontFamily: "sans-serif",
@@ -48,16 +63,38 @@ class BuySellAction extends React.Component {
       this.state.actionType === "SELL" ? "#F75535" : "#9CAAC1";
 
     return (
-      <div>
-        <ButtonToolbar>
-          <Button onClick={this.onClickBuy} style={buyButtonStyle}>
-            BUY
-          </Button>
-          <Button onClick={this.onClickSell} style={sellButtonStyle}>
-            SELL
-          </Button>
-        </ButtonToolbar>
+      <div class="flex-container">
+        <Form>
+          <ButtonToolbar>
+            <Button onClick={this.onClickBuy} style={buyButtonStyle}>
+              BUY
+            </Button>
+            <Button onClick={this.onClickSell} style={sellButtonStyle}>
+              SELL
+            </Button>
+          </ButtonToolbar>
+
+          <div class="buySellRow">
+            <FieldGroup
+              id='inputQuantity'
+              type='text'
+              label='QUANTITY'
+            />
+            <FieldGroup
+              id='inputBid'
+              type='text'
+              label='BID'
+            />
+            <FieldGroup
+              id='inputTotal'
+              type='text'
+              label='TOTAL'
+            />
+          </div>
+          <Button type="submit">Submit</Button>
+        </Form>
       </div>
+
     );
   }
 }
