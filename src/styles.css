@@ -12,7 +12,7 @@
     "Lucida Sans", Arial, sans-serif;
 }
 
-.buySellRow {
+.buySellCol {
   display: flex;
   flex-direction: column;
   justify-content: left;
@@ -23,20 +23,17 @@
 .buySellTextField {
   margin-right: 1em;
   margin-bottom: 1em;
+  max-width: 18.3em;
+  min-width: 9em;
 }
 
-.buySellSelectAction {
-  margin-top: 1em;
-  width: 10em;
-}
-
-.buySellTitle {
+/* .buySellTitle {
   font-weight: bold;
   min-width: 15em;
   border: 1px yellow solid;
-}
+} */
 
-.buySellValue {
+/* .buySellValue {
   min-width: 15em;
   margin-top: 0.7em;
-}
+} */

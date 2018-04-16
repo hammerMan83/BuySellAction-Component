@@ -28,7 +28,9 @@ class BuySellAction extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      actionType: "BUY"
+      actionType: "BUY",
+      buyCurrency: { code: 'TUSD', name: 'TrueUSD' },
+      sellCurrency: { code: 'BTC', name: 'Bitcoin' }
     };
 
     // Q: Is this binding mandatory ?
@@ -50,8 +52,17 @@ class BuySellAction extends React.Component {
       fontFamily: "sans-serif",
       fontWeight: "bold"
     };
+
     let sellButtonStyle = {
       width: "9em",
+      fontFamily: "sans-serif",
+      fontWeight: "bold"
+    };
+
+    let submitButtonStyle = {
+      minWidth: "9.6em",
+      maxWidth: "18.3em",
+      width: "18.3em",
       fontFamily: "sans-serif",
       fontWeight: "bold"
     };
@@ -61,6 +72,14 @@ class BuySellAction extends React.Component {
 
     sellButtonStyle.backgroundColor =
       this.state.actionType === "SELL" ? "#F75535" : "#9CAAC1";
+
+    submitButtonStyle.backgroundColor =
+      this.state.actionType === "BUY" ? "#00A45B" : "#F75535";
+
+    const buyCurrency = this.state.buyCurrency;
+    const sellCurrency = this.state.buyCurrency;
+    const buyOrSellCurrency = this.state.actionType === "BUY" ? buyCurrency : sellCurrency;
+    const submitButtonTitle = this.state.actionType + ' ' + buyOrSellCurrency.name;
 
     return (
       <div class="flex-container">
@@ -74,7 +93,7 @@ class BuySellAction extends React.Component {
             </Button>
           </ButtonToolbar>
 
-          <div class="buySellRow">
+          <div class="buySellCol">
             <FieldGroup
               id='inputQuantity'
               type='text'
@@ -91,7 +110,7 @@ class BuySellAction extends React.Component {
               label='TOTAL'
             />
           </div>
-          <Button type="submit">Submit</Button>
+          <Button type="submit" style={submitButtonStyle}>{submitButtonTitle}</Button>
         </Form>
       </div>
 
