@@ -98,20 +98,29 @@ class BuySellAction extends React.Component {
               <FieldGroup
                 id='inputQuantity'
                 type='text'
-                label='QUANTITY'
-              />
-              <span>TUSD</span>
+                label='QUANTITY'>
+              </FieldGroup>
+              <div class="currencyCodeLabel">TUSD</div>
             </div>
-            <FieldGroup
-              id='inputBid'
-              type='text'
-              label='BID'
-            />
-            <FieldGroup
-              id='inputTotal'
-              type='text'
-              label='TOTAL'
-            />
+
+            <div class="inputLabelRow">            
+              <FieldGroup
+                id='inputBid'
+                type='text'
+                label='BID'>
+              </FieldGroup>
+              <div class="currencyCodeLabel">BTC</div>
+            </div>
+
+            <div class="inputLabelRow">                        
+              <FieldGroup
+                id='inputTotal'
+                type='text'
+                label='TOTAL'>
+              </FieldGroup>
+              <div class="currencyCodeLabel">TUSD</div>
+            </div>
+
           </div>
           <Button type="submit" style={submitButtonStyle}>{submitButtonTitle}</Button>
         </Form>
