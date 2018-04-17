@@ -94,11 +94,14 @@ class BuySellAction extends React.Component {
           </ButtonToolbar>
 
           <div class="buySellCol">
-            <FieldGroup
-              id='inputQuantity'
-              type='text'
-              label='QUANTITY'
-            />
+            <div class="inputLabelRow">
+              <FieldGroup
+                id='inputQuantity'
+                type='text'
+                label='QUANTITY'
+              />
+              <span>TUSD</span>
+            </div>
             <FieldGroup
               id='inputBid'
               type='text'

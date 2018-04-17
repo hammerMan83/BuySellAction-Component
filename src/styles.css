@@ -27,6 +27,12 @@
   min-width: 9em;
 }
 
+.inputLabelRow {
+  display: flex;
+  flex-direction: row;
+  border: 1px red solid;
+}
+
 /* .buySellTitle {
   font-weight: bold;
   min-width: 15em;
